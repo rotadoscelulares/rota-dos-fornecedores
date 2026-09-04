@@ -16,6 +16,13 @@ const COOKIE_NAME = process.env.SESSION_COOKIE_NAME || "rc66_session";
 const PROJECT_ROOT = path.join(__dirname, "..");
 const ADMIN_APP_DIST = path.join(PROJECT_ROOT, "admin-app", "dist");
 
+// Login desativado temporariamente: site entregue como pós-compra (link liberado
+// direto após a compra na Cakto). Para reativar o cadastro/login de clientes,
+// volte este valor para "true" (mantém tudo funcionando, só volta a exigir login
+// para ver o catálogo). O login do admin em /admin continua ativo sempre.
+const REQUIRE_LOGIN = false;
+const catalogoAuthMiddleware = REQUIRE_LOGIN ? [requireAuth] : [];
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(PROJECT_ROOT));
@@ -127,13 +134,13 @@ app.post("/api/auth/redefinir-senha", (req, res) => {
 });
 
 /* ------------------------------------------------------------------ */
-/* Catálogo (protegido — só para quem está logado)                     */
+/* Catálogo (público quando REQUIRE_LOGIN = false, ver topo do arquivo) */
 /* ------------------------------------------------------------------ */
-app.get("/api/categorias", requireAuth, (req, res) => {
+app.get("/api/categorias", ...catalogoAuthMiddleware, (req, res) => {
   res.json({ ok: true, categorias: catalogo.categorias });
 });
 
-app.get("/api/fornecedores", requireAuth, (req, res) => {
+app.get("/api/fornecedores", ...catalogoAuthMiddleware, (req, res) => {
   res.json({ ok: true, fornecedores: catalogo.fornecedores });
 });
 

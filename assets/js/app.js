@@ -1,6 +1,12 @@
 (function () {
   "use strict";
 
+  // Login desativado temporariamente: o site agora é entregue como pós-compra
+  // (link liberado direto após a compra na Cakto), sem exigir cadastro/login.
+  // Para reativar o login, basta voltar este valor para "true"
+  // (e reativar REQUIRE_LOGIN em server/server.js também).
+  var REQUIRE_LOGIN = false;
+
   var DATA = window.APP_DATA || { categorias: [], fornecedores: [] };
 
   var state = {
@@ -582,6 +588,15 @@
     });
   }
 
+  // Esconde os links "Entrar" do menu enquanto o login estiver desativado.
+  function esconderNavAuth() {
+    [document.getElementById("navAuthLink"), document.getElementById("navAuthLinkMobile")].forEach(function (link) {
+      if (!link) return;
+      var item = link.closest("li");
+      (item || link).hidden = true;
+    });
+  }
+
   function wireLoginGateForm() {
     var form = document.getElementById("formLoginGate");
     if (!form) return;
@@ -615,8 +630,26 @@
   async function iniciarConteudoProtegido() {
     var gate = document.getElementById("loginGate");
     var conteudo = document.getElementById("gatedContent");
+
+    if (!REQUIRE_LOGIN) {
+      // Catálogo liberado direto, sem exigir login (ver REQUIRE_LOGIN acima).
+      esconderNavAuth();
+      if (gate) gate.hidden = true;
+      if (!conteudo) return;
+      conteudo.hidden = false;
+
+      var [catResPublico, fornResPublico] = await Promise.all([window.AUTH.categorias(), window.AUTH.fornecedores()]);
+      if (catResPublico.ok) DATA.categorias = catResPublico.categorias;
+      if (fornResPublico.ok) DATA.fornecedores = fornResPublico.fornecedores;
+
+      renderCategories();
+      setupFilters();
+      renderSuppliers();
+      return;
+    }
+
     if (!gate || !conteudo) {
-      // P\u00e1gina sem \u00e1rea travada (ex.: central de ajuda) \u2014 s\u00f3 atualiza o menu.
+      // Página sem área travada (ex.: central de ajuda) — só atualiza o menu.
       if (window.AUTH) {
         var resp = await window.AUTH.me();
         atualizarNavAuth(resp.ok);
