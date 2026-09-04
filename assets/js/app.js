@@ -638,10 +638,8 @@
       if (!conteudo) return;
       conteudo.hidden = false;
 
-      var [catResPublico, fornResPublico] = await Promise.all([window.AUTH.categorias(), window.AUTH.fornecedores()]);
-      if (catResPublico.ok) DATA.categorias = catResPublico.categorias;
-      if (fornResPublico.ok) DATA.fornecedores = fornResPublico.fornecedores;
-
+      // Dados já vêm embutidos em assets/js/data.js — nenhuma chamada ao
+      // backend é necessária para o catálogo público (site 100% estático).
       renderCategories();
       setupFilters();
       renderSuppliers();

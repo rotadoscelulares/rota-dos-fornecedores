@@ -1,12 +1,13 @@
 "use strict";
 
 /**
- * Dados públicos da plataforma Rota dos Celulares 66 (usados no rodapé em
- * todas as páginas, inclusive antes do login).
+ * Dados públicos da plataforma Rota dos Celulares 66.
  *
- * O catálogo de categorias e fornecedores NÃO fica mais aqui — agora só é
- * carregado após login, via /api/categorias e /api/fornecedores (ver
- * server/catalogo.js e assets/js/app.js).
+ * Categorias e fornecedores ficam embutidos aqui (mesmos dados de
+ * server/catalogo.js) para que a página funcione sem depender do backend
+ * enquanto o login estiver desativado (ver REQUIRE_LOGIN em assets/js/app.js
+ * e server/server.js). Ao reativar o login, esses dados voltam a ser
+ * substituídos pelos vindos de /api/categorias e /api/fornecedores.
  */
 window.APP_DATA = {
   empresa: {
@@ -33,8 +34,42 @@ window.APP_DATA = {
     },
   },
 
-  // Preenchidos em tempo de execução após login (ver app.js -> carregarCatalogo()).
-  categorias: [],
-  fornecedores: [],
+  categorias: [
+    { id: "iphones-apple", nome: "iPhones e produtos Apple", descricao: "iPhones, iPads e acessórios originais Apple.", icone: "phone" },
+    { id: "xiaomi", nome: "Xiaomi", descricao: "Smartphones e acessórios da linha Xiaomi.", icone: "layers" },
+    { id: "realme", nome: "Realme", descricao: "Smartphones e acessórios da linha Realme.", icone: "bolt" },
+    { id: "android", nome: "Smartphones Android", descricao: "Outras marcas Android em geral.", icone: "grid" },
+    { id: "revenda", nome: "Celulares Repasse", descricao: "Lotes e unidades voltados para revendedores.", icone: "box" },
+    { id: "eletronicos", nome: "Eletrônicos", descricao: "Equipamentos e dispositivos eletrônicos diversos.", icone: "chip" },
+    { id: "acessorios", nome: "Acessórios", descricao: "Capas, películas, fones, carregadores e mais.", icone: "plug" },
+    { id: "pecas", nome: "Peças e componentes", descricao: "Componentes e peças para manutenção e reparo.", icone: "tool" },
+    { id: "comunidades", nome: "Comunidades e grupos de fornecedores", descricao: "Grupos e canais de relacionamento direto com fornecedores.", icone: "users" },
+  ],
+
+  fornecedores: [
+    { id: "best-shop", modelo: false, nome: "Best Shop", especialidade: "Apple Lacrados, iPhones Seminovos, Tablets, Xiaomi e Realme", categorias: ["iphones-apple", "xiaomi", "realme", "eletronicos", "acessorios"], produtos: ["iPhone Lacrado", "iPhone Seminovo", "Tablet", "Xiaomi", "Realme", "Acessórios Apple", "MacBook", "iPad"], marcas: ["Apple", "Xiaomi", "Realme"], localizacao: "Cuiabá - MT", verificado: false, foto: null, whatsapp: "5565996978474", linkComunidade: "https://chat.whatsapp.com/INh50Jke71w4nzgDmXak8S" },
+    { id: "baia-imports", modelo: false, nome: "Baia Imports", especialidade: "iPhone Semi Novos e iPhone Repasse", categorias: ["iphones-apple"], produtos: ["iPhone Seminovo", "iPhone Repasse"], marcas: ["Apple"], localizacao: "Cuiabá - MT", verificado: false, foto: null, whatsapp: "5565996223544", linkComunidade: "https://chat.whatsapp.com/JquAKefUDL0HMxJgsa5otR" },
+    { id: "thiago-cell", modelo: false, nome: "Thiago Cell", especialidade: "iPhones Lacrados e Seminovos", categorias: ["iphones-apple"], produtos: ["iPhone Lacrado", "iPhone Seminovo"], marcas: ["Apple"], localizacao: "Cuiabá - MT", verificado: false, foto: null, whatsapp: "5565996256223", linkComunidade: "https://chat.whatsapp.com/GZHro7Fu4W01KBxifkpzl9" },
+    { id: "fernando-cell-atacado", modelo: false, nome: "Fernando Cell - Atacado", especialidade: "Xiaomi, Realme e Motorola - Atacado", categorias: ["iphones-apple", "xiaomi", "realme", "android"], produtos: ["Smartphones"], marcas: ["Xiaomi", "Realme", "Motorola"], localizacao: "Cuiabá - MT", verificado: false, foto: null, whatsapp: "5565998030332", linkComunidade: "https://chat.whatsapp.com/KvSuZdIUgzNDa0y0r9J2kQ", comunidadeMensagem: "Entre em nossa comunidade para receber as melhores ofertas diárias! 🔥" },
+    { id: "dignetcell-atacado", modelo: false, nome: "Dignetcell - Atacado", especialidade: "Xiaomi, Realme, Smartphones Android, Apple - Seminovos e Repasse - Atacado", categorias: ["xiaomi", "realme", "android", "iphones-apple", "revenda"], produtos: ["Smartphones", "iPhone Seminovo"], marcas: ["Xiaomi", "Realme", "Apple"], localizacao: "Cuiabá - MT", verificado: false, foto: null, whatsapp: "5565992082321", linkComunidade: "https://chat.whatsapp.com/Kf0OvG5NbWIIHnI1iiktRV" },
+    { id: "tinho-variedades", modelo: false, nome: "Tinho Variedades", especialidade: "Acessórios e Eletrônicos", categorias: ["acessorios", "eletronicos"], produtos: ["Acessórios", "Eletrônicos"], marcas: ["A definir"], localizacao: "Cuiabá - MT", verificado: false, foto: null, whatsapp: "5565996070887", linkComunidade: "https://chat.whatsapp.com/COyfsLN0HoM4srN5uduQF9" },
+    { id: "ts-imports", modelo: false, nome: "Ts Imports", especialidade: "Produtos Apple, Eletrônicos e Acessórios", categorias: ["iphones-apple", "eletronicos", "acessorios"], produtos: ["Produtos Apple", "Eletrônicos", "Acessórios"], marcas: ["Apple"], localizacao: "Cuiabá - MT", verificado: false, foto: null, whatsapp: "5565981626585", linkComunidade: "https://chat.whatsapp.com/BS72xlpWrXFDd4to1iDP23" },
+    { id: "mega-imports", modelo: false, nome: "Mega Imports", especialidade: "iPhones e produtos Apple, Xiaomi, Realme, Smartphones Android, Eletrônicos e Acessórios", categorias: ["iphones-apple", "xiaomi", "realme", "android", "eletronicos", "acessorios"], produtos: ["iPhone", "Smartphones", "Eletrônicos", "Acessórios"], marcas: ["Apple", "Xiaomi", "Realme"], localizacao: "Cuiabá - MT", verificado: false, foto: null, whatsapp: "5565993109946", linkComunidade: "https://chat.whatsapp.com/IQmTQn7gmWrAiQ3FYgSbcK" },
+    { id: "ecell-acessorios", modelo: false, nome: "Ecell Acessórios", especialidade: "Acessórios, Peças e Componentes, Eletrônicos", categorias: ["acessorios", "pecas", "eletronicos"], produtos: ["Acessórios", "Peças e componentes", "Eletrônicos"], marcas: ["A definir"], localizacao: "Cuiabá - MT", verificado: false, foto: null, whatsapp: "5565996060999", linkComunidade: null },
+    { id: "central-cell-pecas-acessorios", modelo: false, nome: "Central Cell Peças e Acessórios", especialidade: "Peças e Componentes e Acessórios", categorias: ["pecas", "acessorios"], produtos: ["Peças e componentes", "Acessórios"], marcas: ["A definir"], localizacao: "Cuiabá - MT", verificado: false, foto: null, whatsapp: "5565984110471", linkComunidade: null },
+    { id: "fb-cell", modelo: false, nome: "FB Cell", especialidade: "Peças e Componentes", categorias: ["pecas"], produtos: ["Peças e componentes"], marcas: ["A definir"], localizacao: "Cuiabá - MT", verificado: false, foto: null, whatsapp: "5565999982428", linkComunidade: null },
+    { id: "stock-center", modelo: false, nome: "Stock Center", especialidade: "Peças e Componentes e Acessórios", categorias: ["pecas", "acessorios"], produtos: ["Peças e componentes", "Acessórios"], marcas: ["A definir"], localizacao: "Sinop - MT", verificado: false, foto: null, whatsapp: "5566996583483", linkComunidade: null },
+    { id: "blend-sports", modelo: false, nome: "Blend Sports", especialidade: "Peças e Componentes e Acessórios", categorias: ["pecas", "acessorios"], produtos: ["Peças e componentes", "Acessórios"], marcas: ["A definir"], localizacao: "Sinop - MT", verificado: false, foto: null, whatsapp: "5566996072111", linkComunidade: null },
+    { id: "globo-cell", modelo: false, nome: "Globo Cell", especialidade: "Peças e Componentes", categorias: ["pecas"], produtos: ["Peças e componentes"], marcas: ["A definir"], localizacao: "Sinop - MT", verificado: false, foto: null, whatsapp: "5566992241349", linkComunidade: null },
+    { id: "pk-store-atacado", modelo: false, nome: "Pk Store Atacado", especialidade: "Celulares Repasse - Atacado", categorias: ["revenda"], produtos: ["Celulares Repasse"], marcas: ["A definir"], localizacao: "Cuiabá - MT", verificado: false, foto: null, whatsapp: "5565992797741", linkComunidade: "https://chat.whatsapp.com/DIWi505ryJj932qv5oEFee" },
+    { id: "rv-cell", modelo: false, nome: "RV Cell", especialidade: "Xiaomi, Realme e Smartphones Android", categorias: ["xiaomi", "realme", "android"], produtos: ["Smartphones"], marcas: ["Xiaomi", "Realme"], localizacao: "Cuiabá - MT", verificado: false, foto: null, whatsapp: "5565981026446", linkComunidade: "https://chat.whatsapp.com/EuFeqZgZOhzKKfocoHQG4b" },
+    { id: "pai-da-apple", modelo: false, nome: "Pai da Apple", especialidade: "iPhones e produtos Apple, Xiaomi, Realme, Smartphones Android e Celulares Repasse", categorias: ["iphones-apple", "xiaomi", "realme", "android", "revenda"], produtos: ["iPhone", "Smartphones", "Celulares Repasse"], marcas: ["Apple", "Xiaomi", "Realme"], localizacao: "Cuiabá - MT", verificado: false, foto: null, whatsapp: "5565981757777", comunidades: [
+      { titulo: "iPhones Seminovos", link: "https://chat.whatsapp.com/BkTp3hjQnWjK0IxpG7q6wd" },
+      { titulo: "Xiaomi", link: "https://chat.whatsapp.com/J5sviY7AzpGAklcSlD8WWc" },
+      { titulo: "Acessórios", link: "https://chat.whatsapp.com/FDE4kKsqzKpGWWdgrZopHw" },
+      { titulo: "iPhones Lacrados", link: "https://chat.whatsapp.com/EvosRbGhwTs01cOYI4lIw2" },
+    ] },
+  ],
 };
+
 
