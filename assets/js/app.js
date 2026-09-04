@@ -156,6 +156,24 @@
     observeEntrance(grid.querySelectorAll(".category-card"));
   }
 
+  // Versão da página inicial: cada categoria é só um link para fornecedores.html.
+  function renderCategoriesHome() {
+    var grid = document.getElementById("categoriesGridHome");
+    if (!grid) return;
+    grid.innerHTML = "";
+    DATA.categorias.forEach(function (cat) {
+      var card = el(
+        '<a href="fornecedores.html" class="category-card card" role="listitem">' +
+          '<span class="category-icon">' + iconFor(cat.icone) + "</span>" +
+          "<h3>" + cat.nome + "</h3>" +
+          "<p>" + cat.descricao + "</p>" +
+          "</a>"
+      );
+      grid.appendChild(card);
+    });
+    observeEntrance(grid.querySelectorAll(".category-card"));
+  }
+
   function markActiveCategory() {
     document.querySelectorAll(".category-card").forEach(function (card) {
       card.classList.toggle("is-active", card.getAttribute("data-category") === state.categoria);
@@ -684,6 +702,7 @@
     setupPendingLinks();
     renderEmpresaInfo();
     setupShowcaseSlider();
+    renderCategoriesHome();
     wireLoginGateForm();
     if (window.AUTH) iniciarConteudoProtegido();
   });
