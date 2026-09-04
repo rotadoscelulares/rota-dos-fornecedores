@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: rota-dos-celulares-66
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: SESSION_COOKIE_NAME
+        value: rc66_session
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
