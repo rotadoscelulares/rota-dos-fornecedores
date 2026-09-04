@@ -706,4 +706,11 @@
     wireLoginGateForm();
     if (window.AUTH) iniciarConteudoProtegido();
   });
+
+  // Registra o service worker (acesso offline) — não afeta login/admin.
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("sw.js").catch(function () {});
+    });
+  }
 })();
