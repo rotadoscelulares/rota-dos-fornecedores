@@ -1,0 +1,15 @@
+# Dependências e builds
+node_modules/
+admin-app/dist/
+admin-app/node_modules/
+admin-app/*.tsbuildinfo
+
+# Segredos — nunca commitar
+server/.env
+
+# Banco de dados local (dados reais de clientes) — nunca commitar
+server/data/*.db
+
+# Diversos
+*.log
+.DS_Store

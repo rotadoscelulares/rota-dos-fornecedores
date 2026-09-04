@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B0D10" />
+  <meta name="color-scheme" content="dark" />
+  <title>Rota dos Celulares 66 — Catálogo de Fornecedores</title>
+  <meta name="description" content="Encontre os melhores fornecedores de celulares, eletrônicos e acessórios em um só lugar. Catálogo pós-compra da Rota dos Celulares 66." />
+  <link rel="icon" type="image/png" href="assets/img/logo-oficial.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Rota dos Celulares 66 — página inicial">
+        <img src="assets/img/logo-oficial.png" alt="Logotipo Rota dos Celulares 66" class="brand-logo" width="44" height="44" decoding="async" fetchpriority="high" />
+        <span class="brand-name">Rota dos Celulares <strong>66</strong></span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#fornecedores">Fornecedores</a></li>
+          <li><a href="#categorias">Categorias</a></li>
+          <li><a href="#suporte">Suporte</a></li>
+          <li><a href="login.html" id="navAuthLink">Entrar</a></li>
+        </ul>
+      </nav>
+
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Abrir menu de navegação">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <nav id="mobileNav" class="mobile-nav" aria-label="Navegação móvel" hidden>
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#fornecedores">Fornecedores</a></li>
+        <li><a href="#categorias">Categorias</a></li>
+        <li><a href="#suporte">Suporte</a></li>
+        <li><a href="login.html" id="navAuthLinkMobile">Entrar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="conteudo-principal">
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy fade-in-up">
+          <p class="eyebrow">Sua rota para comprar e revender melhor</p>
+          <h1>Os melhores fornecedores de tecnologia, na palma da sua mão.</h1>
+          <p class="hero-subtitle">
+            Imagine ter acesso a fornecedores de iPhones, Apple, Xiaomi e eletrônicos,
+            com preços competitivos para você comprar bem, revender com confiança e
+            encontrar novas oportunidades todos os dias.
+          </p>
+          <div class="hero-proof-row" aria-label="Benefícios da lista de fornecedores">
+            <span><strong>R$ 500+</strong> de margem por venda</span>
+            <span><strong>500%</strong> de potencial de retorno</span>
+          </div>
+          <div class="hero-actions">
+            <a href="cadastro.html" class="btn btn-primary">Faça seu cadastro</a>
+            <a href="#amostra" class="btn btn-secondary">Ver o que você encontra</a>
+          </div>
+          <p class="hero-note">Acesso a uma curadoria de contatos, comunidades e oportunidades para revendedores.</p>
+        </div>
+
+        <div class="hero-visual product-showcase" id="amostra">
+          <div class="showcase-orbit" aria-hidden="true"></div>
+          <div class="showcase-slider" data-slider>
+            <article class="showcase-slide is-active" data-slide>
+              <img src="assets/img/produtos/iphone-15-128gb.png" alt="iPhone 15 128 GB, Rosa 81% e Preto 83%, todo original, R$ 2.400,00" />
+            </article>
+            <article class="showcase-slide" data-slide>
+              <img src="assets/img/produtos/iphone-13-256gb.png" alt="iPhone 13 256 GB azul, 70%, todo original, R$ 1.500,00" />
+            </article>
+            <article class="showcase-slide" data-slide>
+              <img src="assets/img/produtos/whoop-peak-5.png" alt="Whoop Peak 5.0, lacrado com 12 meses de membership, poucas unidades, R$ 2.000,00" />
+            </article>
+            <article class="showcase-slide" data-slide>
+              <img src="assets/img/produtos/iphone-14-pro-128gb.png" alt="iPhone 14 Pro 128 GB, 84%, todo original, R$ 2.590,00" />
+            </article>
+            <article class="showcase-slide" data-slide>
+              <img src="assets/img/produtos/iphone-17-pro-max-256gb.png" alt="iPhone 17 Pro Max 256 GB Silver, R$ 7.040,00" />
+            </article>
+            <button class="slider-arrow slider-prev" type="button" data-slider-prev aria-label="Imagem anterior">&#8592;</button>
+            <button class="slider-arrow slider-next" type="button" data-slider-next aria-label="Próxima imagem">&#8594;</button>
+            <div class="slider-dots" role="tablist" aria-label="Imagens da apresentação">
+              <button type="button" class="is-active" data-slider-dot="0" aria-label="Ver imagem 1" aria-selected="true"></button>
+              <button type="button" data-slider-dot="1" aria-label="Ver imagem 2" aria-selected="false"></button>
+              <button type="button" data-slider-dot="2" aria-label="Ver imagem 3" aria-selected="false"></button>
+              <button type="button" data-slider-dot="3" aria-label="Ver imagem 4" aria-selected="false"></button>
+              <button type="button" data-slider-dot="4" aria-label="Ver imagem 5" aria-selected="false"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="conversion-strip" aria-label="Convite para cadastro">
+      <div class="container conversion-inner">
+        <div>
+          <p class="eyebrow">Comece sua próxima venda</p>
+          <h2>Faça seu cadastro e tenha acesso a todos esses produtos e muito mais.</h2>
+          <p>Entre para consultar fornecedores, categorias, comunidades e novas oportunidades em um só lugar.</p>
+        </div>
+        <a href="cadastro.html" class="btn btn-primary">Criar minha conta</a>
+      </div>
+    </section>
+
+    <!-- ÁREA DE LOGIN (exibida apenas para quem ainda não entrou) -->
+    <section id="loginGate" class="login-gate-section" hidden>
+      <div class="container">
+        <div class="card login-gate-card">
+          <p class="eyebrow">Área exclusiva para clientes</p>
+          <h2>Entre para ver o catálogo de fornecedores</h2>
+          <p class="hero-subtitle">
+            A busca, os filtros, as categorias e a lista completa de fornecedores são
+            liberados somente após o login da sua conta.
+          </p>
+
+          <form id="formLoginGate" class="auth-form login-gate-form" novalidate>
+            <div class="form-field">
+              <label for="gateEmail">E-mail</label>
+              <input type="email" id="gateEmail" name="gateEmail" autocomplete="email" required />
+            </div>
+            <div class="form-field">
+              <label for="gateSenha">Senha</label>
+              <input type="password" id="gateSenha" name="gateSenha" autocomplete="current-password" required />
+            </div>
+            <p id="gateErro" class="form-error" role="alert" hidden></p>
+            <button type="submit" class="btn btn-primary auth-submit">Entrar</button>
+          </form>
+
+          <p class="auth-switch">
+            Ainda não tem conta? <a href="cadastro.html">Criar conta</a> ·
+            <a href="login.html">Esqueci minha senha</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTEÚDO LIBERADO APENAS APÓS LOGIN -->
+    <div id="gatedContent" hidden>
+      <!-- BUSCA E FILTROS -->
+      <section id="busca" class="search-section" aria-label="Busca e filtros de fornecedores">
+        <div class="container">
+          <div class="search-bar card">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" stroke="#A9B0BC" stroke-width="2"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#A9B0BC" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <label for="searchInput" class="sr-only">Buscar fornecedor, produto ou categoria</label>
+            <input type="search" id="searchInput" placeholder="Buscar fornecedor, produto ou categoria" autocomplete="off" />
+          </div>
+
+          <div class="filters" role="group" aria-label="Filtros de fornecedores">
+            <div class="filter-field">
+              <label for="filterCategoria">Categoria</label>
+              <select id="filterCategoria">
+                <option value="">Todas as categorias</option>
+              </select>
+            </div>
+            <div class="filter-field">
+              <label for="filterMarca">Marca</label>
+              <select id="filterMarca">
+                <option value="">Todas as marcas</option>
+              </select>
+            </div>
+            <div class="filter-field">
+              <label for="filterProduto">Tipo de produto</label>
+              <select id="filterProduto">
+                <option value="">Todos os produtos</option>
+              </select>
+            </div>
+            <div class="filter-field">
+              <label for="filterFornecedor">Fornecedor</label>
+              <select id="filterFornecedor">
+                <option value="">Todos os fornecedores</option>
+              </select>
+            </div>
+            <button type="button" id="clearFilters" class="btn btn-ghost">Limpar filtros</button>
+          </div>
+
+          <p id="resultsCount" class="results-count" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <!-- CATEGORIAS -->
+      <section id="categorias" class="categories-section">
+        <div class="container">
+          <h2>Categorias</h2>
+          <p class="section-subtitle">Escolha uma categoria para filtrar o catálogo instantaneamente.</p>
+          <div class="categories-grid" id="categoriesGrid" role="list"></div>
+        </div>
+      </section>
+
+      <!-- CATÁLOGO DE FORNECEDORES -->
+      <section id="fornecedores" class="suppliers-section">
+        <div class="container">
+          <h2>Catálogo de fornecedores</h2>
+          <p class="section-subtitle">
+            Módulos de exemplo exibidos abaixo — cada um será substituído por dados reais
+            de fornecedores conforme forem cadastrados.
+          </p>
+          <div class="suppliers-grid" id="suppliersGrid" role="list"></div>
+          <p id="emptyState" class="empty-state" hidden>Nenhum fornecedor encontrado com os filtros selecionados.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- SUPORTE -->
+    <section id="suporte" class="support-section">
+      <div class="container support-inner">
+        <h2>Suporte</h2>
+        <p class="section-subtitle">Precisa de ajuda para encontrar um fornecedor ou usar a plataforma?</p>
+        <div class="support-grid">
+          <div class="card support-card">
+            <h3>Central de ajuda</h3>
+            <p>Dúvidas sobre como usar os filtros, categorias e cartões de fornecedores.</p>
+            <a href="central-de-ajuda.html" class="btn btn-secondary">Acessar central</a>
+          </div>
+          <div class="card support-card">
+            <h3>Fale conosco</h3>
+            <p>Canal direto de atendimento para dúvidas sobre a plataforma.</p>
+            <a href="#" class="btn btn-secondary" id="supportWhatsappLink" data-pending-label="Fale conosco">Iniciar conversa</a>
+          </div>
+          <div class="card support-card support-card-human">
+            <h3>Suporte Humano</h3>
+            <p>Atendimento exclusivo para quem já comprou, com dúvidas sobre a lista de fornecedores.</p>
+            <a href="#" class="btn btn-primary" id="humanSupportWhatsappLink">Falar com o suporte</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/img/logo-oficial.png" alt="Logotipo Rota dos Celulares 66" width="36" height="36" loading="lazy" decoding="async" />
+        <div>
+          <span class="footer-brand-name">Rota dos Celulares 66</span>
+          <p>Catálogo organizado de fornecedores de celulares, smartphones, eletrônicos e acessórios para clientes pós-compra.</p>
+        </div>
+      </div>
+
+      <div class="footer-contact">
+        <h3>Contato</h3>
+        <address id="footerAddress" class="footer-address"></address>
+        <p id="footerCnpj" class="footer-cnpj"></p>
+        <div id="footerSocialIcons" class="social-icons" role="list" aria-label="Redes sociais da Rota dos Celulares 66"></div>
+      </div>
+
+      <div class="footer-links">
+        <h3>Suporte</h3>
+        <ul>
+          <li><a href="#suporte">Central de suporte</a></li>
+          <li><a href="#" class="btn-link" id="footerWhatsappLink">Fale conosco</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-legal">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#" class="pending-link" data-pending-label="Política de privacidade">Política de privacidade</a></li>
+        </ul>
+        <p class="footer-notice">
+          Uso responsável das informações: os contatos e comunidades listados devem ser
+          utilizados de forma ética e dentro dos termos de cada fornecedor.
+        </p>
+        <p class="footer-copyright">© 2026 Rota dos Celulares 66. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/auth-client.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B0D10" />
+  <meta name="color-scheme" content="dark" />
+  <title>Criar conta — Rota dos Celulares 66</title>
+  <link rel="icon" type="image/png" href="assets/img/logo-oficial.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="index.html#inicio" aria-label="Rota dos Celulares 66 — página inicial">
+        <img src="assets/img/logo-oficial.png" alt="Logotipo Rota dos Celulares 66" class="brand-logo" width="44" height="44" decoding="async" />
+        <span class="brand-name">Rota dos Celulares <strong>66</strong></span>
+      </a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html#inicio">Início</a></li>
+          <li><a href="login.html">Entrar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo-principal">
+    <section class="auth-section">
+      <div class="container auth-container">
+        <div class="card auth-card">
+          <p class="eyebrow">Área do cliente</p>
+          <h1 class="auth-title">Criar conta</h1>
+          <p class="hero-subtitle">Cadastre-se para acessar a plataforma com sua conta pessoal.</p>
+
+          <form id="formCadastro" class="auth-form" novalidate>
+            <div class="form-field">
+              <label for="nomeCompleto">Nome completo</label>
+              <input type="text" id="nomeCompleto" name="nomeCompleto" autocomplete="name" required />
+            </div>
+            <div class="form-field">
+              <label for="endereco">Endereço</label>
+              <input type="text" id="endereco" name="endereco" autocomplete="street-address" required />
+            </div>
+            <div class="form-field">
+              <label for="celular">Número de celular</label>
+              <input type="tel" id="celular" name="celular" autocomplete="tel" placeholder="(65) 99999-9999" required />
+            </div>
+            <div class="form-field">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" autocomplete="email" required />
+            </div>
+            <div class="form-field">
+              <label for="senha">Senha</label>
+              <input type="password" id="senha" name="senha" autocomplete="new-password" required />
+            </div>
+            <ul id="senhaRegras" class="senha-regras" aria-live="polite"></ul>
+            <div class="form-field">
+              <label for="confirmarSenha">Confirmar senha</label>
+              <input type="password" id="confirmarSenha" name="confirmarSenha" autocomplete="new-password" required />
+            </div>
+
+            <p id="formErro" class="form-error" role="alert" hidden></p>
+            <p id="formSucesso" class="form-success" role="status" hidden></p>
+
+            <button type="submit" class="btn btn-primary auth-submit">Criar conta</button>
+          </form>
+
+          <p class="auth-switch">Já tem conta? <a href="login.html">Entrar</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/auth-client.js"></script>
+  <script>
+    (function () {
+      window.AUTH.me().then(function (resp) {
+        if (resp.ok) window.location.href = resp.usuario.isAdmin ? "/admin/" : "index.html";
+      });
+
+      var senhaInput = document.getElementById("senha");
+      var regrasList = document.getElementById("senhaRegras");
+      var erroEl = document.getElementById("formErro");
+      var sucessoEl = document.getElementById("formSucesso");
+
+      function renderRegras() {
+        var valor = senhaInput.value;
+        regrasList.innerHTML = window.SENHA_REGRAS.map(function (regra) {
+          var ok = regra.test(valor);
+          return '<li class="' + (ok ? "regra-ok" : "regra-pendente") + '">' + (ok ? "✓" : "○") + " " + regra.label + "</li>";
+        }).join("");
+      }
+      senhaInput.addEventListener("input", renderRegras);
+      renderRegras();
+
+      document.getElementById("formCadastro").addEventListener("submit", async function (evt) {
+        evt.preventDefault();
+        erroEl.hidden = true;
+        sucessoEl.hidden = true;
+
+        var dados = {
+          nomeCompleto: document.getElementById("nomeCompleto").value.trim(),
+          endereco: document.getElementById("endereco").value.trim(),
+          celular: document.getElementById("celular").value.trim(),
+          email: document.getElementById("email").value.trim(),
+          senha: senhaInput.value,
+        };
+        var confirmar = document.getElementById("confirmarSenha").value;
+
+        if (dados.senha !== confirmar) {
+          erroEl.textContent = "As senhas não coincidem.";
+          erroEl.hidden = false;
+          return;
+        }
+
+        var submitBtn = evt.target.querySelector("button[type=submit]");
+        submitBtn.classList.add("is-loading");
+        var resposta = await window.AUTH.registrar(dados);
+        submitBtn.classList.remove("is-loading");
+
+        if (!resposta.ok) {
+          erroEl.textContent = (resposta.erros && resposta.erros.join(" ")) || resposta.erro || "Não foi possível criar a conta.";
+          erroEl.hidden = false;
+          return;
+        }
+
+        sucessoEl.textContent = "Conta criada com sucesso! Redirecionando para o login…";
+        sucessoEl.hidden = false;
+        window.setTimeout(function () { window.location.href = "login.html"; }, 1200);
+      });
+    })();
+  </script>
+</body>
+</html>

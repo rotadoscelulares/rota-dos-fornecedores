@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0B0D10" />
+  <meta name="color-scheme" content="dark" />
+  <title>Esqueci minha senha — Rota dos Celulares 66</title>
+  <link rel="icon" type="image/png" href="assets/img/logo-oficial.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="index.html#inicio" aria-label="Rota dos Celulares 66 — página inicial">
+        <img src="assets/img/logo-oficial.png" alt="Logotipo Rota dos Celulares 66" class="brand-logo" width="44" height="44" decoding="async" />
+        <span class="brand-name">Rota dos Celulares <strong>66</strong></span>
+      </a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="login.html">Entrar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo-principal">
+    <section class="auth-section">
+      <div class="container auth-container">
+        <div class="card auth-card">
+          <p class="eyebrow">Área do cliente</p>
+          <h1 class="auth-title">Esqueci minha senha</h1>
+          <p class="hero-subtitle">
+            Informe o e-mail da sua conta. Se ele estiver cadastrado, enviaremos um link
+            para você criar uma nova senha. O link é válido por 30 minutos.
+          </p>
+
+          <form id="formEsqueciSenha" class="auth-form" novalidate>
+            <div class="form-field">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" autocomplete="email" required />
+            </div>
+
+            <p id="formErro" class="form-error" role="alert" hidden></p>
+            <p id="formSucesso" class="form-success" role="status" hidden></p>
+
+            <button type="submit" class="btn btn-primary auth-submit">Enviar link</button>
+          </form>
+
+          <p class="auth-switch"><a href="login.html">Voltar para o login</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/auth-client.js"></script>
+  <script>
+    (function () {
+      var erroEl = document.getElementById("formErro");
+      var sucessoEl = document.getElementById("formSucesso");
+
+      document.getElementById("formEsqueciSenha").addEventListener("submit", async function (evt) {
+        evt.preventDefault();
+        erroEl.hidden = true;
+        sucessoEl.hidden = true;
+
+        var email = document.getElementById("email").value.trim();
+        var submitBtn = evt.target.querySelector("button[type=submit]");
+        submitBtn.classList.add("is-loading");
+        var resposta = await window.AUTH.esqueciSenha(email);
+        submitBtn.classList.remove("is-loading");
+
+        sucessoEl.textContent = resposta.mensagem || "Se esse e-mail estiver cadastrado, enviamos um link de redefinição.";
+        sucessoEl.hidden = false;
+      });
+    })();
+  </script>
+</body>
+</html>

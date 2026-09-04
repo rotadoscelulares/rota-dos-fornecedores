@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../design-system"
+		},
+		{
+			"path": "../docs"
+		},
+		{
+			"path": "../server"
+		}
+	]
+}
