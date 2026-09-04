@@ -26,8 +26,8 @@
       <nav class="main-nav" aria-label="Navegação principal">
         <ul>
           <li><a href="#inicio">Início</a></li>
-          <li><a href="#fornecedores">Fornecedores</a></li>
-          <li><a href="#categorias">Categorias</a></li>
+          <li><a href="fornecedores.html">Fornecedores</a></li>
+          <li><a href="fornecedores.html#categorias">Categorias</a></li>
           <li><a href="#suporte">Suporte</a></li>
           <li><a href="login.html" id="navAuthLink">Entrar</a></li>
         </ul>
@@ -43,8 +43,8 @@
     <nav id="mobileNav" class="mobile-nav" aria-label="Navegação móvel" hidden>
       <ul>
         <li><a href="#inicio">Início</a></li>
-        <li><a href="#fornecedores">Fornecedores</a></li>
-        <li><a href="#categorias">Categorias</a></li>
+        <li><a href="fornecedores.html">Fornecedores</a></li>
+        <li><a href="fornecedores.html#categorias">Categorias</a></li>
         <li><a href="#suporte">Suporte</a></li>
         <li><a href="login.html" id="navAuthLinkMobile">Entrar</a></li>
       </ul>
@@ -112,110 +112,9 @@
           <h2>Conheça com exclusividade a lista de fornecedores que pode te gerar até R$ 500,00 de margem em somente uma venda!</h2>
           <p>Entre para consultar fornecedores, categorias, comunidades e novas oportunidades em um só lugar.</p>
         </div>
-        <a href="#fornecedores" class="btn btn-primary">Acesse Já!</a>
+        <a href="fornecedores.html" class="btn btn-primary">Acesse Já!</a>
       </div>
     </section>
-
-    <!-- ÁREA DE LOGIN (exibida apenas para quem ainda não entrou) -->
-    <section id="loginGate" class="login-gate-section" hidden>
-      <div class="container">
-        <div class="card login-gate-card">
-          <p class="eyebrow">Área exclusiva para clientes</p>
-          <h2>Entre para ver o catálogo de fornecedores</h2>
-          <p class="hero-subtitle">
-            A busca, os filtros, as categorias e a lista completa de fornecedores são
-            liberados somente após o login da sua conta.
-          </p>
-
-          <form id="formLoginGate" class="auth-form login-gate-form" novalidate>
-            <div class="form-field">
-              <label for="gateEmail">E-mail</label>
-              <input type="email" id="gateEmail" name="gateEmail" autocomplete="email" required />
-            </div>
-            <div class="form-field">
-              <label for="gateSenha">Senha</label>
-              <input type="password" id="gateSenha" name="gateSenha" autocomplete="current-password" required />
-            </div>
-            <p id="gateErro" class="form-error" role="alert" hidden></p>
-            <button type="submit" class="btn btn-primary auth-submit">Entrar</button>
-          </form>
-
-          <p class="auth-switch">
-            Ainda não tem conta? <a href="cadastro.html">Criar conta</a> ·
-            <a href="login.html">Esqueci minha senha</a>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTEÚDO LIBERADO APENAS APÓS LOGIN -->
-    <div id="gatedContent" hidden>
-      <!-- BUSCA E FILTROS -->
-      <section id="busca" class="search-section" aria-label="Busca e filtros de fornecedores">
-        <div class="container">
-          <div class="search-bar card">
-            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <circle cx="11" cy="11" r="7" stroke="#A9B0BC" stroke-width="2"/>
-              <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#A9B0BC" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            <label for="searchInput" class="sr-only">Buscar fornecedor, produto ou categoria</label>
-            <input type="search" id="searchInput" placeholder="Buscar fornecedor, produto ou categoria" autocomplete="off" />
-          </div>
-
-          <div class="filters" role="group" aria-label="Filtros de fornecedores">
-            <div class="filter-field">
-              <label for="filterCategoria">Categoria</label>
-              <select id="filterCategoria">
-                <option value="">Todas as categorias</option>
-              </select>
-            </div>
-            <div class="filter-field">
-              <label for="filterMarca">Marca</label>
-              <select id="filterMarca">
-                <option value="">Todas as marcas</option>
-              </select>
-            </div>
-            <div class="filter-field">
-              <label for="filterProduto">Tipo de produto</label>
-              <select id="filterProduto">
-                <option value="">Todos os produtos</option>
-              </select>
-            </div>
-            <div class="filter-field">
-              <label for="filterFornecedor">Fornecedor</label>
-              <select id="filterFornecedor">
-                <option value="">Todos os fornecedores</option>
-              </select>
-            </div>
-            <button type="button" id="clearFilters" class="btn btn-ghost">Limpar filtros</button>
-          </div>
-
-          <p id="resultsCount" class="results-count" aria-live="polite"></p>
-        </div>
-      </section>
-
-      <!-- CATEGORIAS -->
-      <section id="categorias" class="categories-section">
-        <div class="container">
-          <h2>Categorias</h2>
-          <p class="section-subtitle">Escolha uma categoria para filtrar o catálogo instantaneamente.</p>
-          <div class="categories-grid" id="categoriesGrid" role="list"></div>
-        </div>
-      </section>
-
-      <!-- CATÁLOGO DE FORNECEDORES -->
-      <section id="fornecedores" class="suppliers-section">
-        <div class="container">
-          <h2>Catálogo de fornecedores</h2>
-          <p class="section-subtitle">
-            Módulos de exemplo exibidos abaixo — cada um será substituído por dados reais
-            de fornecedores conforme forem cadastrados.
-          </p>
-          <div class="suppliers-grid" id="suppliersGrid" role="list"></div>
-          <p id="emptyState" class="empty-state" hidden>Nenhum fornecedor encontrado com os filtros selecionados.</p>
-        </div>
-      </section>
-    </div>
 
     <!-- SUPORTE -->
     <section id="suporte" class="support-section">
